@@ -1,4 +1,8 @@
-import type { Notification, TrackedNotification } from "./models";
+import type {
+  ErrorNotification,
+  Notification,
+  TrackedNotification,
+} from "./models";
 
 export const renderNotification = (notification: Notification): string => {
   switch (notification.type) {
@@ -17,7 +21,7 @@ export const renderNotification = (notification: Notification): string => {
 
 export const isErrorNotification = (
   notification: Notification,
-): notification is Extract<Notification, { type: "error" }> => {
+): notification is ErrorNotification => {
   return notification.type === "error";
 };
 

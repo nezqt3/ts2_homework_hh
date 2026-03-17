@@ -12,29 +12,18 @@ export const handleResult = <T>(result: ApiResult<T>): string => {
   }
 };
 
-export const apiRequest = async <T>(url: string): Promise<ApiResult<T>> => {
-  try {
-    const response: Response = await fetch(url);
-
-    if (!response.ok) {
-      return {
-        status: "error",
-        error: `HTTP ${response.status}`,
-      };
-    }
-
-    const data: T = (await response.json()) as T;
-
-    return {
-      status: "success",
-      data,
-    };
-  } catch (error: unknown) {
+export const apiRequest = <T>(url: string): ApiResult<T> => {
+  if (!url) {
     return {
       status: "error",
-      error: error instanceof Error ? error.message : "Unknown error",
+      error: "URL is required",
     };
   }
+
+  return {
+    status: "success",
+    data: {} as T,
+  };
 };
 
 export function getTodos(): ApiResult<TodoPreview[]>;

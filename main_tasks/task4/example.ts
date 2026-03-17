@@ -14,7 +14,7 @@ const captureResult: string = await DomShot.capture(document.body, {
 console.log("Captured:", captureResult);
 
 // download возвращает Promise<void>
-const downloaded: void = await DomShot.download(document.body, "capture.png", {
+const downloaded: void = await DomShot.download(document.body, "capture", {
   format: "jpeg",
   quality: 0.8,
 });

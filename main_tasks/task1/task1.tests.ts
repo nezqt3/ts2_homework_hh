@@ -1,11 +1,11 @@
 import type { Genre, Movie, MovieCard, MovieFull } from "./models";
-import { Genres } from "./models";
+import { GENRES } from "./models";
 import { filterByGenre } from "./functions";
 
 /**
  * GENRES — readonly tuple
  */
-const genres = Genres;
+const genres = GENRES;
 
 // нельзя менять readonly массив
 // @ts-expect-error
@@ -13,7 +13,7 @@ genres.push("romance");
 
 // проверка что это именно tuple
 const tupleCheck: readonly ["comedy", "drama", "action", "horror", "sci-fi"] =
-  Genres;
+  GENRES;
 
 /**
  * Проверка Genre union

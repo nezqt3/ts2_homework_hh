@@ -11,7 +11,7 @@ export interface Movie {
 export type MovieCard = Pick<Movie, "id" | "title" | "year" | "rating">;
 export type MovieFull = Readonly<Movie>;
 
-export const Genres = [
+export const GENRES = [
   "comedy",
   "drama",
   "action",
@@ -19,11 +19,11 @@ export const Genres = [
   "sci-fi",
 ] as const;
 
-export type Genre = (typeof Genres)[number];
+export type Genre = (typeof GENRES)[number];
 
 export type SortBy = "year" | "rating" | "title";
 
-export const genreEmoji = {
+export const GENRE_EMOJI = {
   comedy: "😂",
   drama: "🎭",
   action: "💥",
