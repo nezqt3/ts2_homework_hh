@@ -15,7 +15,7 @@ import {
  * и не добавить case "info" в renderNotification
  */
 
-// @ts-expect-error renderNotification must be exhaustive after adding InfoNotification
+// @ts-expect-error: renderNotification must be exhaustive after adding InfoNotification
 const exhaustiveCheck = renderNotification({
   type: "info",
   message: "Information",
@@ -51,7 +51,7 @@ const successColorLiteral: "#4caf50" = NOTIFICATION_CONFIG.success.color;
 const errorColorLiteral: "#f44336" = NOTIFICATION_CONFIG.error.color;
 const warningColorLiteral: "#ff9800" = NOTIFICATION_CONFIG.warning.color;
 
-// @ts-expect-error literal type expected, not another string
+// @ts-expect-error: literal type expected, not another string
 const wrongLiteral: "#000000" = NOTIFICATION_CONFIG.success.color;
 
 console.log(

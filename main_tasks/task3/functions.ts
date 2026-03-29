@@ -14,10 +14,7 @@ export const handleResult = <T>(result: ApiResult<T>): string => {
 
 export const apiRequest = <T>(url: string): ApiResult<T> => {
   if (!url) {
-    return {
-      status: "error",
-      error: "URL is required",
-    };
+    throw new Error("URL is required");
   }
 
   return {

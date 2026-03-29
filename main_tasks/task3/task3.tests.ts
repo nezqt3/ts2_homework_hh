@@ -13,7 +13,7 @@ import { getTodos, handleResult } from "./functions";
  * TodoId нельзя передать туда, где ожидается UserId
  */
 
-// @ts-expect-error TodoId must not be assignable to UserId
+// @ts-expect-error: TodoId must not be assignable to UserId
 const wrongUserId: UserId = 1 as TodoId;
 
 console.log(wrongUserId);
@@ -27,7 +27,7 @@ console.log(wrongUserId);
  * и не добавить case "loading" в handleResult
  */
 
-// @ts-expect-error handleResult must be exhaustive after adding new status
+// @ts-expect-error: handleResult must be exhaustive after adding new status
 const exhaustiveCheck = handleResult({
   status: "loading",
 } as ApiResult<string>);
@@ -39,7 +39,7 @@ console.log(exhaustiveCheck);
  * Если забыть один ключ, должна быть ошибка компиляции.
  */
 
-// @ts-expect-error missing "critical"
+// @ts-expect-error: missing "critical"
 const incompletePriorityColors: Record<Priority, string> = {
   low: "green",
   medium: "yellow",
@@ -54,7 +54,7 @@ console.log(incompletePriorityColors);
 
 const firstPriorityLiteral: "low" = PRIORITIES[0];
 
-// @ts-expect-error PRIORITIES[0] is "low", not "medium"
+// @ts-expect-error: PRIORITIES[0] is "low", not "medium"
 const wrongPriorityLiteral: "medium" = PRIORITIES[0];
 
 console.log(firstPriorityLiteral, wrongPriorityLiteral);
@@ -82,10 +82,10 @@ const todoResult = getTodos(todoId);
 const todosCheck: ApiResult<TodoPreview[]> = todosResult;
 const todoCheck: ApiResult<Todo> = todoResult;
 
-// @ts-expect-error getTodos() returns ApiResult<TodoPreview[]>, not ApiResult<Todo>
+// @ts-expect-error: getTodos() returns ApiResult<TodoPreview[]>, not ApiResult<Todo>
 const wrongTodosCheck: ApiResult<Todo> = getTodos();
 
-// @ts-expect-error getTodos(todoId) returns ApiResult<Todo>, not ApiResult<TodoPreview[]>
+// @ts-expect-error: getTodos(todoId) returns ApiResult<Todo>, not ApiResult<TodoPreview[]>
 const wrongTodoCheck: ApiResult<TodoPreview[]> = getTodos(todoId);
 
 console.log(todosCheck, todoCheck, wrongTodosCheck, wrongTodoCheck);

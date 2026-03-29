@@ -12,22 +12,13 @@ DomShot.capture(el);
  */
 const captureResult: Promise<string> = DomShot.capture(el);
 
-/**
- * ❌ scale должен быть number
- */
-// @ts-expect-error
+// @ts-expect-error: scale должен быть number
 DomShot.capture(el, { scale: "two" });
 
-/**
- * ❌ format ограничен "png" | "jpeg" | "webp"
- */
-// @ts-expect-error
+// @ts-expect-error: format должен быть "png" | "jpeg" | "webp"
 DomShot.capture(el, { format: "bmp" });
 
-/**
- * ❌ element должен быть HTMLElement
- */
-// @ts-expect-error
+// @ts-expect-error: element должен быть HTMLElement
 DomShot.capture("not element");
 
 /**
@@ -40,7 +31,7 @@ const downloadResult: Promise<void> = DomShot.download(el, "screenshot");
  */
 const versionCheck: string = DomShot.version;
 
-// @ts-expect-error version не number
+// @ts-expect-error: version не number
 const wrongVersion: number = DomShot.version;
 
 /**
@@ -56,7 +47,7 @@ DomShot.capture(el, { useCORS: true });
  */
 DomShot.capture(el, { offset: { x: 10, y: 20 } });
 
-// @ts-expect-error missing y
+// @ts-expect-error: missing y
 DomShot.capture(el, { offset: { x: 10 } });
 
 /**
@@ -68,7 +59,7 @@ DomShot.capture(el, {
   },
 });
 
-// @ts-expect-error wrong param type
+// @ts-expect-error: wrong param type
 DomShot.capture(el, { onClone: (node: string) => {} });
 
 /**
@@ -80,5 +71,5 @@ formats.forEach((format) => {
   const check: "png" | "jpeg" | "webp" = format;
 });
 
-// @ts-expect-error не любой string
+// @ts-expect-error: не любой string
 const wrongFormat: "bmp" = formats[0];

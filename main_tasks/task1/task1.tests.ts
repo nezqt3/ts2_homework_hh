@@ -7,8 +7,7 @@ import { filterByGenre } from "./functions";
  */
 const genres = GENRES;
 
-// нельзя менять readonly массив
-// @ts-expect-error
+// @ts-expect-error: нельзя менять readonly массив
 genres.push("romance");
 
 // проверка что это именно tuple
@@ -21,7 +20,7 @@ const tupleCheck: readonly ["comedy", "drama", "action", "horror", "sci-fi"] =
 
 const goodGenre: Genre = "comedy";
 
-// @ts-expect-error
+// @ts-expect-error: "romance" не входит в Genre
 const badGenre: Genre = "romance";
 
 /**
@@ -40,7 +39,7 @@ const movies: Movie[] = [
 
 filterByGenre(movies, "comedy");
 
-// @ts-expect-error
+// @ts-expect-error: "romance" не входит в Genre
 filterByGenre(movies, "romance");
 
 /**
@@ -54,7 +53,7 @@ const card: MovieCard = {
   rating: 9,
 };
 
-// @ts-expect-error
+// @ts-expect-error: genre не входит в MovieCard
 card.genre = "comedy";
 
 /**
@@ -69,5 +68,5 @@ const movieFull: MovieFull = {
   genre: "drama",
 };
 
-// @ts-expect-error
+// @ts-expect-error: MovieFull — readonly, нельзя менять поля
 movieFull.title = "Changed";
